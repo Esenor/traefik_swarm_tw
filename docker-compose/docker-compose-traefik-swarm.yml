@@ -1,0 +1,27 @@
+version: "3"
+services:
+  traefik:
+    image: traefik:v2.0
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.swarmMode=true"
+      - "--providers.docker.watch=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entryPoints.web-secure.address=:443"
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
