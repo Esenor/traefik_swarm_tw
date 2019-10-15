@@ -8,18 +8,23 @@ services:
         constraints:
           - node.role == worker
       labels:
-        # 
+        # ##################################
+        # Base service configuration
         - "traefik.enable=true"
-        # 
+        # ##################################
+        # Service service configuration
         - "traefik.http.services.bepo_service.loadbalancer.server.port=80"
-        # 
+        # ##################################
+        # Middlewares serviceconfiguration
         - "traefik.http.middlewares.bepo_redirect.redirectregex.regex=^http://(.*)"
         - "traefik.http.middlewares.bepo_redirect.redirectregex.replacement=https://$$1"
-        # 
+        # ##################################
+        # Insecure (http) router configuration
         - "traefik.http.routers.bepo_insecure.rule=Host(`bepo.swarm.olst.io`)"
         - "traefik.http.routers.bepo_insecure.entrypoints=web"
         - "traefik.http.routers.bepo_insecure.middlewares=bepo_redirect"
-        # 
+        # ##################################
+        # Secure (https) router configuration
         - "traefik.http.routers.bepo_secure.rule=Host(`bepo.swarm.olst.io`)"
         - "traefik.http.routers.bepo_secure.tls=true"
         - "traefik.http.routers.bepo_secure.entrypoints=web-secure"
@@ -32,12 +37,16 @@ services:
         constraints:
           - node.role == worker
       labels:
-        # 
+        # ##################################
+        # Base service configuration
         - "traefik.enable=true"
-        # 
+        # ##################################
+        # Service service configuration
         - "traefik.http.services.qwerty_service.loadbalancer.server.port=80"
-        # 
+        # ##################################
+        # Middlewares serviceconfiguration
+        - "traefik.http.middlewares.qwerty_auth.basicauth.users=foo:$$apr1$$Pe1Xe/Ck$$9caH3qa/1XJMu6RzR7f1J0"
+        # ##################################
+        # Insecure (http) router configuration
         - "traefik.http.routers.qwerty_website.rule=Host(`qwerty.swarm.olst.io`)"
         - "traefik.http.routers.qwerty_website.middlewares=qwerty_auth"
-        # 
-        - "traefik.http.middlewares.qwerty_auth.basicauth.users=foo:$$apr1$$Pe1Xe/Ck$$9caH3qa/1XJMu6RzR7f1J0"
