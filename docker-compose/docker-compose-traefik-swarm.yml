@@ -46,6 +46,6 @@ services:
         - "traefik.http.routers.traefik_secure.rule=Host(`traefik.swarm.olst.io`)"
         - "traefik.http.routers.traefik_secure.tls=true"
         - "traefik.http.routers.traefik_secure.entrypoints=web-secure"
-        - "traefik.http.routers.traefik_dashboard.middlewares=traefik_dashbord_auth"
+        - "traefik.http.routers.traefik_secure.middlewares=traefik_dashbord_auth"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
