@@ -77,8 +77,6 @@ services:
         - "traefik.http.routers.visualizer_insecure.middlewares=visualizer_redirect"
         # ##################################
         # Secure (https) router configuration
-        - "traefik.http.routers.visualizer_secure.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-        - "traefik.http.routers.visualizer_secure.service=api@internal"
         - "traefik.http.routers.visualizer_secure.rule=Host(`visualizer.swarm.olst.io`)"
         - "traefik.http.routers.visualizer_secure.tls=true"
         - "traefik.http.routers.visualizer_secure.entrypoints=web-secure"
