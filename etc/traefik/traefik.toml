@@ -1,0 +1,18 @@
+logLevel="DEBUG"
+defaultEntryPoints = ["web", "web-secure"]
+
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+    [entryPoints.web.redirect]
+      entryPoint = "https"
+  [entryPoints.web-secure]
+    address = ":443"
+    [entryPoints.web-secure.tls]
+
+[providers]
+  docker = true
+  [providers.docker]
+    swarmMode = true
+    watch = true
+    exposedbydefault = false
