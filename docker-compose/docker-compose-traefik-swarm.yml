@@ -5,7 +5,6 @@ services:
     command:
       - "--log.level=DEBUG"
       - "--api.insecure=true"
-      # - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.swarmMode=true"
       - "--providers.docker.watch=true"
@@ -23,15 +22,13 @@ services:
           - node.role == manager
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.api.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-        - "traefik.http.routers.api.service=api@internal"
-        # - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
+        - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
         # 
         # - "traefik.http.middlewares.traefik_redirect.redirectregex.regex=^http://(.*)"
         # - "traefik.http.middlewares.traefik_redirect.redirectregex.replacement=https://$$1"
         # 
-        # - "traefik.http.routers.traefik_insecure.rule=Host(`traefik.swarm.olst.io`)"
-        # - "traefik.http.routers.traefik_insecure.entrypoints=web"
+        - "traefik.http.routers.traefik_insecure.rule=Host(`traefik.swarm.olst.io`)"
+        - "traefik.http.routers.traefik_insecure.entrypoints=web"
         # - "traefik.http.routers.traefik_insecure.middlewares=traefik_redirect"
         # 
         # - "traefik.http.routers.traefik_secure.rule=Host(`traefik.swarm.olst.io`)"
