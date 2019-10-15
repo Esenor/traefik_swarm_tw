@@ -23,5 +23,19 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
+        # 
+        - "traefik.http.middlewares.traefik_redirect.redirectregex.regex=^http://(.*)"
+        - "traefik.http.middlewares.traefik_redirect.redirectregex.replacement=https://$$1"
+        # 
+        - "traefik.http.routers.traefik_insecure.rule=Host(`traefik.swarm.olst.io`)"
+        - "traefik.http.routers.traefik_insecure.entrypoints=web"
+        - "traefik.http.routers.traefik_insecure.middlewares=traefik_redirect"
+        # 
+        - "traefik.http.routers.traefik_secure.rule=Host(`traefik.swarm.olst.io`)"
+        - "traefik.http.routers.traefik_secure.tls=true"
+        - "traefik.http.routers.traefik_secure.entrypoints=web-secure"
+        # - "traefik.http.routers.traefik_dashboard.middlewares=traefik_dashbord_auth"
+        # 
+        # - "traefik.http.middlewares.traefik_dashbord_auth.basicauth.users=admin:$$apr1$$1I1ii04B$$HXp60s10NwWKeNsdgQ9xD/"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
