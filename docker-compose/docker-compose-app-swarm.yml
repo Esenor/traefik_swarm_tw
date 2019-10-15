@@ -3,7 +3,7 @@ services:
   website_a:
     image: nginx
     deploy:
-      replicas: 1
+      replicas: 4
       placement:
         constraints:
           - node.role == worker
@@ -32,7 +32,7 @@ services:
   website_b:
     image: nginx
     deploy:
-      replicas: 1
+      replicas: 2
       placement:
         constraints:
           - node.role == worker
