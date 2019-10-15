@@ -65,7 +65,7 @@ services:
         - "traefik.enable=true"
         # ##################################
         # Service service configuration
-        - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
+        - "traefik.http.services.visualizer_service.loadbalancer.server.port=8080"
         # ##################################
         # Middlewares serviceconfiguration
         - "traefik.http.middlewares.visualizer_redirect.redirectregex.regex=^http://(.*)"
