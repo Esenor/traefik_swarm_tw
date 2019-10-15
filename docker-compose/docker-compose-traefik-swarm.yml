@@ -11,6 +11,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entryPoints.web-secure.address=:443"
+      - "--docker.endpoint='unix:///var/run/docker.sock'"
     ports:
       - "80:80"
       - "8080:8080"
@@ -38,4 +39,4 @@ services:
         # 
         # - "traefik.http.middlewares.traefik_dashbord_auth.basicauth.users=admin:$$apr1$$1I1ii04B$$HXp60s10NwWKeNsdgQ9xD/"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
