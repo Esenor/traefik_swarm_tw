@@ -1,0 +1,6 @@
+[http]
+  [http.middlewares]
+    [http.middlewares.global-http-to-https]
+      [http.middlewares.global-http-to-https.redirectRegex]
+        regex = "^http://(.*)"
+        replacement = "https://$1"

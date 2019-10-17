@@ -19,7 +19,7 @@ defaultEntryPoints = ["web", "web-secure"]
     exposedbydefault = false
   [providers.file]
     watch = true
-    filename = "traefik.toml"
+    filename = "dynaefik.toml.toml"
 
 [http]
   [http.middlewares]
