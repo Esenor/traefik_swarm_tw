@@ -2,7 +2,7 @@ version: "3"
 services:
   traefik:
     image: traefik:v2.0
-    command:
+    # command:
       # - "--log.level=info"
       # - "--api.insecure=true" //
       # - "--api.dashboard=true"
@@ -12,7 +12,6 @@ services:
       # - "--providers.docker.exposedbydefault=false"
       # - "--entrypoints.web.address=:80"
       # - "--entryPoints.web-secure.address=:443"
-      - "--configFile=./traefik.toml"
     ports:
       - "80:80"
       - "443:443"
