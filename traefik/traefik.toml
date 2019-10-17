@@ -1,24 +1,26 @@
 defaultEntryPoints = ["web", "web-secure"]
 
 [log]
-level = "debug"
+  level = "info"
 
 [api]
-dashboard = true
+  dashboard = true
 
 [entryPoints]
   [entryPoints.web]
-  address = ":80"
+    address = ":80"
   [entryPoints.web-secure]
-  address = ":443"
-
-[http.middlewares]
-  [http.middlewares.global-http-to-https.redirectRegex]
-  regex = "^http://(.*)"
-  replacement = "https://$1"
+    address = ":443"
 
 [providers]
   [providers.docker] 
-  swarmMode = true
-  watch = true
-  exposedbydefault = false
+    swarmMode = true
+    watch = true
+    exposedbydefault = false
+  [providers.file]
+    watch=true
+
+[http.middlewares]
+  [http.middlewares.global-http-to-https.redirectRegex]
+    regex = "^http://(.*)"
+    replacement = "https://$1"
