@@ -19,6 +19,7 @@ defaultEntryPoints = ["web", "web-secure"]
     exposedbydefault = false
   [providers.file]
     watch = true
+    directory = "/etc/traefik/"
     filename = "dynaefik.toml"
 
 [http]
