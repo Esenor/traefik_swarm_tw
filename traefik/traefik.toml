@@ -18,10 +18,8 @@ defaultEntryPoints = ["web", "web-secure"]
     watch = true
     exposedbydefault = false
   [providers.file]
-    directory = "/etc/traefik"
     watch = true
     filename = "traefik.toml"
-    debugLogGeneratedTemplate = false
 
 [http]
   [http.middlewares]
