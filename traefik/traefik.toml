@@ -17,10 +17,15 @@ defaultEntryPoints = ["web", "web-secure"]
     swarmMode = true
     watch = true
     exposedbydefault = false
+  [providers.file]
+    directory = "/etc/traefik"
+    watch = true
+    filename = "traefik.toml"
+    debugLogGeneratedTemplate = false
 
-    [providers.docker.http]
-      [providers.docker.http.middlewares]
-        [providers.docker.http.middlewares.global-http-to-https]
-          [providers.docker.http.middlewares.global-http-to-https.redirectRegex]
-            regex = "^http://(.*)"
-            replacement = "https://$1"
+[http]
+  [http.middlewares]
+    [http.middlewares.global-http-to-https]
+      [http.middlewares.global-http-to-https.redirectRegex]
+        regex = "^http://(.*)"
+        replacement = "https://$1"
