@@ -17,8 +17,6 @@ defaultEntryPoints = ["web", "web-secure"]
     swarmMode = true
     watch = true
     exposedbydefault = false
-  [providers.file]
-    watch=true
 
 [http]
   [http.middlewares]
