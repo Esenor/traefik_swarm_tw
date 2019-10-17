@@ -18,9 +18,9 @@ defaultEntryPoints = ["web", "web-secure"]
     watch = true
     exposedbydefault = false
 
-[http]
-  [http.middlewares]
-    [http.middlewares.global-http-to-https]
-      [http.middlewares.global-http-to-https.redirectRegex]
-        regex = "^http://(.*)"
-        replacement = "https://$1"
+    [providers.docker.http]
+      [providers.docker.http.middlewares]
+        [providers.docker.http.middlewares.global-http-to-https]
+          [providers.docker.http.middlewares.global-http-to-https.redirectRegex]
+            regex = "^http://(.*)"
+            replacement = "https://$1"
