@@ -12,7 +12,7 @@ services:
       # - "--providers.docker.exposedbydefault=false"
       # - "--entrypoints.web.address=:80"
       # - "--entryPoints.web-secure.address=:443"
-      - "--configFile=./myconfigfile.toml"
+      - "--configFile=./traefik.toml"
     ports:
       - "80:80"
       - "443:443"
