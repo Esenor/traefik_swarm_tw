@@ -39,7 +39,7 @@ services:
         - "traefik.http.routers.traefik_insecure.rule=Host(`traefik.swarm.olst.io`)"
         - "traefik.http.routers.traefik_insecure.entrypoints=web"
         - "traefik.http.routers.traefik_insecure.middlewares=traefik_redirect"
-        - "traefik.http.routers.traefik_insecure.service=traefik_service"
+        # - "traefik.http.routers.traefik_insecure.service=traefik_service"
         # ##################################
         # Secure (https) router configuration
         - "traefik.http.routers.traefik_secure.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
@@ -47,7 +47,7 @@ services:
         - "traefik.http.routers.traefik_secure.rule=Host(`traefik.swarm.olst.io`)"
         - "traefik.http.routers.traefik_secure.tls=true"
         - "traefik.http.routers.traefik_secure.entrypoints=web-secure"
-        - "traefik.http.routers.traefik_secure.service=traefik_service"
+        # - "traefik.http.routers.traefik_secure.service=traefik_service"
         # - "traefik.http.routers.traefik_secure.middlewares=traefik_dashbord_auth"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
