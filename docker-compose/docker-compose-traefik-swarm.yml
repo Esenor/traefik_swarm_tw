@@ -77,10 +77,12 @@ services:
         - "traefik.http.routers.visualizer_insecure.rule=Host(`visualizer.swarm.olst.io`)"
         - "traefik.http.routers.visualizer_insecure.entrypoints=web"
         - "traefik.http.routers.visualizer_insecure.middlewares=visualizer_redirect"
+        - "traefik.http.routers.visualizer_insecure.service=visualizer_service"
         # ##################################
         # Secure (https) router configuration
         - "traefik.http.routers.visualizer_secure.rule=Host(`visualizer.swarm.olst.io`)"
         - "traefik.http.routers.visualizer_secure.tls=true"
         - "traefik.http.routers.visualizer_secure.entrypoints=web-secure"
+        - "traefik.http.routers.visualizer_secure.service=visualizer_service"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
