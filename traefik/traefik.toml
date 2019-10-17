@@ -20,7 +20,9 @@ defaultEntryPoints = ["web", "web-secure"]
   [providers.file]
     watch=true
 
-[http.middlewares]
-  [http.middlewares.global-http-to-https.redirectRegex]
-    regex = "^http://(.*)"
-    replacement = "https://$1"
+[http]
+  [http.middlewares]
+    [http.middlewares.global-http-to-https]
+      [http.middlewares.global-http-to-https.redirectRegex]
+        regex = "^http://(.*)"
+        replacement = "https://$1"
