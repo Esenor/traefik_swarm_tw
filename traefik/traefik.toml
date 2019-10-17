@@ -18,7 +18,8 @@ dashboard = true
   watch = true
   exposedbydefault = false
 
-[http.middlewares]
-  [http.middlewares.global-http-to-https.redirectRegex]
+[http]
+  [http.middlewares]
+    [http.middlewares.global-http-to-https.redirectRegex]
     regex = "^http://(.*)"
     replacement = "https://$1"
