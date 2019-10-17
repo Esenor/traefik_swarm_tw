@@ -1,0 +1,19 @@
+defaultEntryPoints = ["web", "web-secure"]
+
+[log]
+level = "info"
+
+[api]
+dashboard = true
+
+[entryPoints]
+  [entryPoints.web]
+  address = ":80"
+  [entryPoints.web-secure]
+  address = ":443"
+
+[providers]
+  [providers.docker] 
+  swarmMode = true
+  watch = true
+  exposedbydefault = false
