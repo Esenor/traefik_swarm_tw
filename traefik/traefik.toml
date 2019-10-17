@@ -20,5 +20,5 @@ dashboard = true
 
 [http.middlewares]
   [http.middlewares.global_http_to_https.redirectRegex]
-    regex = "^http://(.*)"
-    replacement = "https://$1"
+  regex = "^http://(.*)"
+  replacement = "https://$1"
