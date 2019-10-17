@@ -16,13 +16,11 @@ services:
         - "traefik.http.services.bepo_service.loadbalancer.server.port=80"
         # ##################################
         # Middlewares serviceconfiguration
-        - "traefik.http.middlewares.bepo_redirect.redirectregex.regex=^http://(.*)"
-        - "traefik.http.middlewares.bepo_redirect.redirectregex.replacement=https://$$1"
         # ##################################
         # Insecure (http) router configuration
         - "traefik.http.routers.bepo_insecure.rule=Host(`bepo.swarm.olst.io`)"
         - "traefik.http.routers.bepo_insecure.entrypoints=web"
-        - "traefik.http.routers.bepo_insecure.middlewares=bepo_redirect"
+        - "traefik.http.routers.bepo_insecure.middlewares=base_redirect_http_to_https"
         - "traefik.http.routers.bepo_insecure.service=bepo_service"
         # ##################################
         # Secure (https) router configuration
