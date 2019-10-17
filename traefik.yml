@@ -69,13 +69,13 @@ services:
         - "traefik.http.services.visualizer_service.loadbalancer.server.port=8080"
         # ##################################
         # Middlewares serviceconfiguration
-        - "traefik.http.middlewares.visualizer_redirect.redirectregex.regex=^http://(.*)"
-        - "traefik.http.middlewares.visualizer_redirect.redirectregex.replacement=https://$$1"
+        # - "traefik.http.middlewares.visualizer_redirect.redirectregex.regex=^http://(.*)"
+        # - "traefik.http.middlewares.visualizer_redirect.redirectregex.replacement=https://$$1"
         # ##################################
         # Insecure (http) router configuration
         - "traefik.http.routers.visualizer_insecure.rule=Host(`visualizer.swarm.olst.io`)"
         - "traefik.http.routers.visualizer_insecure.entrypoints=web"
-        - "traefik.http.routers.visualizer_insecure.middlewares=visualizer_redirect"
+        - "traefik.http.routers.visualizer_insecure.middlewares=traefik_redirect"
         - "traefik.http.routers.visualizer_insecure.service=visualizer_service"
         # ##################################
         # Secure (https) router configuration
