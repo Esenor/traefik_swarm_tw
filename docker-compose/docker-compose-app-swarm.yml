@@ -23,11 +23,13 @@ services:
         - "traefik.http.routers.bepo_insecure.rule=Host(`bepo.swarm.olst.io`)"
         - "traefik.http.routers.bepo_insecure.entrypoints=web"
         - "traefik.http.routers.bepo_insecure.middlewares=bepo_redirect"
+        - "traefik.http.routers.bepo_insecure.service=bepo_service"
         # ##################################
         # Secure (https) router configuration
         - "traefik.http.routers.bepo_secure.rule=Host(`bepo.swarm.olst.io`)"
         - "traefik.http.routers.bepo_secure.tls=true"
         - "traefik.http.routers.bepo_secure.entrypoints=web-secure"
+        - "traefik.http.routers.bepo_secure.service=bepo_service"
   
   website_b:
     image: nginx
@@ -50,3 +52,4 @@ services:
         # Insecure (http) router configuration
         - "traefik.http.routers.qwerty_website.rule=Host(`qwerty.swarm.olst.io`)"
         - "traefik.http.routers.qwerty_website.middlewares=qwerty_auth"
+        - "traefik.http.routers.qwerty_website.service=qwerty_service"
