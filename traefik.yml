@@ -3,15 +3,16 @@ services:
   traefik:
     image: traefik:v2.0
     command:
-      - "--log.level=info"
-      # - "--api.insecure=true"
-      - "--api.dashboard=true"
-      - "--providers.docker=true"
-      - "--providers.docker.swarmMode=true"
-      - "--providers.docker.watch=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entryPoints.web-secure.address=:443"
+      # - "--log.level=info"
+      # - "--api.insecure=true" //
+      # - "--api.dashboard=true"
+      # - "--providers.docker=true"
+      # - "--providers.docker.swarmMode=true"
+      # - "--providers.docker.watch=true"
+      # - "--providers.docker.exposedbydefault=false"
+      # - "--entrypoints.web.address=:80"
+      # - "--entryPoints.web-secure.address=:443"
+      - "--configFile=./myconfigfile.toml"
     ports:
       - "80:80"
       - "443:443"
@@ -49,6 +50,7 @@ services:
         # - "traefik.http.routers.traefik_secure.middlewares=traefik_dashbord_auth"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik.toml:/etc/traefik/traefik.toml"
   # 
   # 
   # 
