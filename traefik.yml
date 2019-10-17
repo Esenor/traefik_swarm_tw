@@ -38,7 +38,7 @@ services:
         - "traefik.http.routers.traefik_insecure.service=api@internal"
         - "traefik.http.routers.traefik_insecure.rule=Host(`traefik.swarm.olst.io`)"
         - "traefik.http.routers.traefik_insecure.entrypoints=web"
-        - "traefik.http.routers.traefik_insecure.middlewares=global_http_to_https"
+        - "traefik.http.routers.traefik_insecure.middlewares=global_http_to_https@internal"
         # ##################################
         # Secure (https) router configuration
         - "traefik.http.routers.traefik_secure.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
@@ -75,7 +75,7 @@ services:
         # Insecure (http) router configuration
         - "traefik.http.routers.visualizer_insecure.rule=Host(`visualizer.swarm.olst.io`)"
         - "traefik.http.routers.visualizer_insecure.entrypoints=web"
-        - "traefik.http.routers.visualizer_insecure.middlewares=global_http_to_https"
+        - "traefik.http.routers.visualizer_insecure.middlewares=global_http_to_https@internal"
         - "traefik.http.routers.visualizer_insecure.service=visualizer_service"
         # ##################################
         # Secure (https) router configuration
