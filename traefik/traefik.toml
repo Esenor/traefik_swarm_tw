@@ -12,14 +12,13 @@ dashboard = true
   [entryPoints.web-secure]
   address = ":443"
 
+[http.middlewares]
+  [http.middlewares.global-http-to-https.redirectRegex]
+  regex = "^http://(.*)"
+  replacement = "https://$1"
+
 [providers]
   [providers.docker] 
   swarmMode = true
   watch = true
   exposedbydefault = false
-
-[http]
-  [http.middlewares]
-    [http.middlewares.global-http-to-https.redirectRegex]
-    regex = "^http://(.*)"
-    replacement = "https://$1"
