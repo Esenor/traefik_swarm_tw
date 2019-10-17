@@ -49,7 +49,7 @@ services:
         # - "traefik.http.routers.traefik_secure.middlewares=traefik_dashbord_auth"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./traefik.toml:/etc/traefik/traefik.toml"
+      - "./traefik:/etc/traefik"
   # 
   # 
   # 
