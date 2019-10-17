@@ -20,7 +20,7 @@ services:
         # Insecure (http) router configuration
         - "traefik.http.routers.bepo_insecure.rule=Host(`bepo.swarm.olst.io`)"
         - "traefik.http.routers.bepo_insecure.entrypoints=web"
-        - "traefik.http.routers.bepo_insecure.middlewares=base_redirect_http_to_https"
+        - "traefik.http.routers.bepo_insecure.middlewares=base_redirect_http_to_https@file"
         - "traefik.http.routers.bepo_insecure.service=bepo_service"
         # ##################################
         # Secure (https) router configuration
