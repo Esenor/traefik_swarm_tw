@@ -16,7 +16,7 @@ services:
         - "traefik.enable=true"
         # ##################################
         # Service service configuration
-        - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
+        - "traefik.http.services.api@internal.loadbalancer.server.port=8080"
         # ##################################
         # Middlewares serviceconfiguration
         # - "traefik.http.middlewares.traefik_dashbord_auth.basicauth.users=admin:$$apr1$$1I1ii04B$$HXp60s10NwWKeNsdgQ9xD/"
@@ -30,11 +30,10 @@ services:
         # ##################################
         # Secure (https) router configuration
         - "traefik.http.routers.traefik_secure.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-        # - "traefik.http.routers.traefik_secure.service=api@internal"
+        - "traefik.http.routers.traefik_secure.service=api@internal"
         - "traefik.http.routers.traefik_secure.rule=Host(`traefik.swarm.olst.io`)"
         - "traefik.http.routers.traefik_secure.tls=true"
         - "traefik.http.routers.traefik_secure.entrypoints=web-secure"
-        - "traefik.http.routers.traefik_secure.service=traefik_service"
         # - "traefik.http.routers.traefik_secure.middlewares=traefik_dashbord_auth"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
