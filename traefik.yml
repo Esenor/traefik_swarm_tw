@@ -16,7 +16,7 @@ services:
         - "traefik.enable=true"
         # ##################################
         # Service service configuration
-        - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
+        # - "traefik.http.services.traefik_service.loadbalancer.server.port=8080"
         # ##################################
         # Middlewares serviceconfiguration
         # - "traefik.http.middlewares.traefik_dashbord_auth.basicauth.users=admin:$$apr1$$1I1ii04B$$HXp60s10NwWKeNsdgQ9xD/"
