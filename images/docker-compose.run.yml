@@ -46,7 +46,7 @@ services:
         # Middlewares serviceconfiguration
         # ##################################
         # Insecure (http) router configuration
-        - "traefik.http.routers.writer_insecure.rule=Host(`reader.swarm.olst.io`)"
+        - "traefik.http.routers.writer_insecure.rule=Host(`writer.swarm.olst.io`)"
         - "traefik.http.routers.writer_insecure.entrypoints=web"
         - "traefik.http.routers.writer_insecure.service=writer_service"
 volumes:
