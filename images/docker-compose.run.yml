@@ -49,3 +49,4 @@ services:
         - "traefik.http.routers.writer_insecure.service=writer_service"
 volumes:
   efc_node_demo:
+    driver: overlay
