@@ -1,7 +1,7 @@
 defaultEntryPoints = ["web", "web-secure"]
 
 [log]
-  level = "info"
+  level = "debug"
 
 [api]
   dashboard = true
