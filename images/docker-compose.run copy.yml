@@ -1,0 +1,53 @@
+version: "3"
+services:
+  reader:
+    build:
+      dockerfile: reader/Dockerfile
+    image: efc:reader-1
+    volumes:
+      - efc_node_demo:/efc/data/
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+      labels:
+        # ##################################
+        # Base service configuration
+        - "traefik.enable=true"
+        # ##################################
+        # Service service configuration
+        - "traefik.http.services.reader_service.loadbalancer.server.port=3000"
+        # ##################################
+        # Middlewares serviceconfiguration
+        # ##################################
+        # Insecure (http) router configuration
+        - "traefik.http.routers.reader_insecure.rule=Host(`reader.swarm.olst.io`)"
+        - "traefik.http.routers.reader_insecure.entrypoints=web"
+        - "traefik.http.routers.reader_insecure.service=reader_service"
+
+  writer:
+    image: efc:writer-1
+    volumes:
+      - efc_node_demo:/efc/data/
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+      labels:
+        # ##################################
+        # Base service configuration
+        - "traefik.enable=true"
+        # ##################################
+        # Service service configuration
+        - "traefik.http.services.writer_service.loadbalancer.server.port=3000"
+        # ##################################
+        # Middlewares serviceconfiguration
+        # ##################################
+        # Insecure (http) router configuration
+        - "traefik.http.routers.writer_insecure.rule=Host(`reader.swarm.olst.io`)"
+        - "traefik.http.routers.writer_insecure.entrypoints=web"
+        - "traefik.http.routers.writer_insecure.service=writer_service"
+volumes:
+  efc_node_demo:
